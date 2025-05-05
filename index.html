@@ -1,0 +1,39 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Countdown</title>
+  <style>
+    body {
+      background-color: black;
+      color: green;
+      font-family: monospace;
+      font-size: 4em;
+      text-align: center;
+      margin-top: 20%;
+    }
+  </style>
+</head>
+<body>
+  <div id="countdown"></div>
+
+  <script>
+    const targetDate = new Date("2025-05-21T14:30:00").getTime(); // update to your date/time
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerText =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
